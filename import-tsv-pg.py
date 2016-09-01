@@ -1,12 +1,12 @@
 #
+from sys import argv
 import psycopg2
 import csv
 
-# build string to pass row data to postgres
-# def exp_builder(counter): #current is existing string, item is the row item #
-#     exp_A = column_names[counter]
-#     exp_B = '%s'
-#     return Exp_A, Exp_B  # check on how to return multiple values ******
+# sets argv with filename to be imported
+script, load = argv
+
+
 
 # Column names for neiss_table
 column_names = ['case_id', 'trmt_date', 'psu', 'weight', 'stratum', \
@@ -41,8 +41,8 @@ age, sex, race, race_other, diag, diag_other, body_part, disposition, location,
 fmv, prod1, prod2, narr1, narr2) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s,
 %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"""
 
-# Opens tsv file to be read into database
-with open ('nss45900.tsv','r') as f:
+# Opens tsv file (specified in argv) to be read into database
+with open (load,'r') as f:
     reader = csv.reader(f, delimiter='\t')
     reader.next() # skips header row
     for row in reader:
@@ -52,12 +52,6 @@ with open ('nss45900.tsv','r') as f:
                 csvline[item] = None
         print csvline
         cur.execute(passData, csvline)
-
-    #for row in reader:
-    #    passDataA = "INSERT INTO neiss_table ("
-    #    passDataB = "VALUES ("
-    #    csvline = row
-
 
 # commit to database changes
 conn.commit()
