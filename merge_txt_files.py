@@ -1,6 +1,14 @@
 from sys import argv
 
-script, from_file = argv #from_file is file to be added to combined file
+""" This routine was created to merge multiple CSV files into one large file
+to enable uploading NEISS data to MS Access.
+
+The files are put together in combined.txt, so initial file should be renamed
+to combined.txt and then run with argument of file to be appended to
+main file.
+"""
+
+script, from_file = argv #from_file is file to be added to combined.txt file
 
 to_file = "combined.txt" #will be repository for all data
 
