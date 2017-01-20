@@ -1,6 +1,5 @@
 # neiss
-This project's aim is to move the annual NEISS data tables from http://www.cpsc.gov/en/Research--Statistics/NEISS-Injury-Data/
-  into a centralized database
+This project's simple aim is to clean and move the annual NEISS data tables from http://www.cpsc.gov/en/Research--Statistics/NEISS-Injury-Data/ into a centralized database
 
 These files deal with the main data table, which is the bulk of the data:
 
